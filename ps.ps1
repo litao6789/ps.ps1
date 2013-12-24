@@ -80,6 +80,6 @@ function start_and_check_with_argment {
 
 # usages like belows
 
-start_and_check_with_argment "notepad"  "d:\1.txt" "notepad" "d:\3.txt" "notepad"  "d:\5.txt" "notepad"  "d:\9.txt"
+#start_and_check_with_argment "notepad"  "d:\1.txt" "notepad" "d:\3.txt" "notepad"  "d:\5.txt" "notepad"  "d:\9.txt"
 
 #start_and_check_without_argment "notepad" "calc" "cmd"
