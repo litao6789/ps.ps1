@@ -53,7 +53,7 @@ And then run __ps1.ps1__
 
 Q:How about this situation:
 
-`program1 `
+`program1`
 
 `program2 argment2`
 
@@ -61,20 +61,13 @@ Q:How about this situation:
 
 `program4 argment41 argment42`
 
-A: You need run two copy of ps1.ps1, one invoke __start_and_check_without_argment__ function, the other one invoke __start_and_check_with_argment__ function.
-
-`copy ps1.ps1 ps2.ps1`
+A: You need a little tricks.
 
 edit ps1.ps1 like this:
 
 `. ( $x + "\ps.ps1" ) `
 
-`start_and_check_without_argment "program1" "program3"`
 
-edit ps2.ps1 like this:
+`start_and_check_with_argment  "program1" "" "program2" "argment2" "program3"  "" "program4" "argment41 argment42"`
 
-`. ( $x + "\ps.ps1" ) `
-
-`start_and_check_with_argment  "program2" "argment2" "program4" "argment41 argment42"`
-
-Then run __ps1.ps1__ and __ps2.ps1__
+Then run __ps1.ps1__ .
