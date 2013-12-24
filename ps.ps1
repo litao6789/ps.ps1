@@ -21,7 +21,8 @@ function start_and_check_without_argment {
   for($j=0;$j -lt $args.count; $j++){      
     $processArray[$j] = $args[$j]  
     $pidArray[$j]  = [Diagnostics.Process]::Start($processArray[$j]).ID
-    Write-Host $timestr "started process: " + $processArray[$j] + " PID: " +  $pidArray[$j]
+    Write-Host $timestr " started process: " + $processArray[$j] + " PID: " +  $pidArray[$j]
+    $timestr + " started process: " + $processArray[$j] + " PID: " +  $pidArray[$j] >> $logfile
     } 
 
   #check whether pids is exists, or run them
@@ -29,7 +30,8 @@ function start_and_check_without_argment {
     for($i=0;$i -lt $args.count; $i++) {    
       if(!(get-process -id $pidArray[$i] -ErrorAction silentlycontinue)) {
         $pidArray[$i] = [Diagnostics.Process]::Start($processArray[$i]).ID
-        Write-Host $timestr "auto restarted process: " + $processArray[$i]  + " PID: " +  $pidArray[$i] 
+        Write-Host $timestr " restart process: " + $processArray[$i]  + " PID: " +  $pidArray[$i] 
+        $timestr + " restart process: " + $processArray[$i]  + " PID: " +  $pidArray[$i] >> $logfile
       }
     }
 
@@ -55,7 +57,8 @@ function start_and_check_with_argment {
     $processArray[$j] = $args[$i]
     $argsArray[$j] = $args[$i+1]     
     $pidArray[$j]  = [Diagnostics.Process]::Start($processArray[$j] , $argsArray[$j]).ID
-    Write-Host $timestr "started process: " + $processArray[$j] + $argsArray[$j] + " PID: " +  $pidArray[$j]        
+    Write-Host $timestr " started process: " + $processArray[$j] + $argsArray[$j] + " PID: " +  $pidArray[$j]  
+    $timestr + " started process: " + $processArray[$j] + $argsArray[$j] + " PID: " +  $pidArray[$j] >> $logfile      
     $j++        
   } 
   
@@ -64,7 +67,8 @@ function start_and_check_with_argment {
     for($i=0;$i -lt $j; $i=$i+1) {    
       if( !(get-process -id $pidArray[$i] -ErrorAction silentlycontinue)){ 
         $pidArray[$i] = [Diagnostics.Process]::Start($processArray[$i] , $argsArray[$i]).ID
-        Write-Host $timestr "auto restarted process: " + $processArray[$i] + $argsArray[$i] + " PID: " +  $pidArray[$i] 
+        Write-Host $timestr " restart process: " + $processArray[$i] + $argsArray[$i] + " PID: " +  $pidArray[$i] 
+        $timestr + " restart process: " + $processArray[$i] + $argsArray[$i] + " PID: " +  $pidArray[$i] >> $logfile
       }
     }
   
@@ -76,6 +80,6 @@ function start_and_check_with_argment {
 
 # usages like belows
 
-#start_and_check_with_argment "notepad"  "d:\1.txt" "notepad" "d:\3.txt" "notepad"  "d:\5.txt" "notepad"  "d:\9.txt"
+start_and_check_with_argment "notepad"  "d:\1.txt" "notepad" "d:\3.txt" "notepad"  "d:\5.txt" "notepad"  "d:\9.txt"
 
-start_and_check_without_argment "notepad" "calc" "cmd"
+#start_and_check_without_argment "notepad" "calc" "cmd"
