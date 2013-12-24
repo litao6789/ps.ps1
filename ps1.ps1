@@ -11,4 +11,4 @@ $x = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 # just for example
 . ( $x + "\ps.ps1" ) 
-#start_and_check_without_argment "notepad" "calc" "cmd"
+start_and_check_without_argment "notepad" "calc" "cmd"
