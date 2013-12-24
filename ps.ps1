@@ -3,7 +3,7 @@
 # run first by administrator :
 # set-executionpolicy remotesigned
 
-# plz change the end of this file for your usages
+# plz use ps1.ps1 to invoke this script
 
 # log file
 $logfile = "log\ps.log"
