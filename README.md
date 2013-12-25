@@ -71,3 +71,13 @@ edit ps1.ps1 like this:
 `start_and_check_with_argment  "program1" "" "program2" "argment2" "program3"  "" "program4" "argment41 argment42"`
 
 Then run __ps1.ps1__ .
+
+
+Contributing
+============
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
